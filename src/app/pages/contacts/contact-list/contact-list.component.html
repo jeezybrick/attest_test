@@ -1,0 +1,46 @@
+<ng-container *ngIf="!isContactsListLoading; else contacts_loading">
+
+  <div class="search-container">
+
+    <mat-form-field>
+      <input matInput placeholder="Quick Search" [(ngModel)]="searchString" type="text">
+    </mat-form-field>
+
+  </div>
+
+
+  <mat-list>
+
+    <ng-container *ngFor="let contact of contacts | filterBy: ['name.first', 'name.last', 'phone']: searchString; let i = index;let last = last">
+
+      <h3 mat-subheader *ngIf="getDifferenceBeetweenFirstLetters(i, contacts)">
+        {{contact.name.first[0].toUpperCase()}}
+      </h3>
+
+      <mat-list-item>
+        <h4 mat-line>{{contact.name.first}} {{contact.name.last}}</h4>
+        <p class="phone-number" mat-line> {{contact.phone[0] || 'No phone'}}</p>
+
+        <div class="action-icons">
+          <button mat-icon-button (click)="editContact(contact)">
+            <mat-icon aria-label="Edit contact">create</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteContactDialog(contact)">
+            <mat-icon aria-label="Delete contact">delete</mat-icon>
+          </button>
+        </div>
+
+        <mat-divider></mat-divider>
+      </mat-list-item>
+
+      <mat-divider *ngIf="!last"></mat-divider>
+
+    </ng-container>
+
+  </mat-list>
+
+</ng-container>
+
+<ng-template #contacts_loading>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

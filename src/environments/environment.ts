@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  contact_list_url: 'https://next.json-generator.com/api/json/get/VJaq_OSXH'
 };
 
 /*

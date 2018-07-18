@@ -1,0 +1,27 @@
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-container form > * {
+  width: 100%;
+}
+
+.form-actions {
+  text-align: right;
+
+  button {
+    margin-right: 1em;
+  }
+}
+
+
+.phones-form-wrap {
+  display: flex;
+
+  .phones-form-input {
+    flex-basis: 95%;
+  }
+}
+
+
