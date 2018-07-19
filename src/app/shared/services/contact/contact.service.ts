@@ -12,7 +12,7 @@ import { map, tap } from 'rxjs/internal/operators';
 export class ContactService {
 
   private _contacts: Contact[];
-  private contactsObs$;
+  public contactsObs$;
 
   constructor(private http: HttpClient) {
   }
@@ -37,7 +37,7 @@ export class ContactService {
 
   public getContactDetail(contactId: number): any {
 
-    const index = this.findContactIndex(contactId);
+    const index = this.findContactIndex(this._contacts, contactId);
 
     if (index > -1) {
       return this._contacts[index];
@@ -56,12 +56,11 @@ export class ContactService {
 
   public editContact(contact): Contact {
 
-    const index = this.findContactIndex(contact.id);
+    const index = this.findContactIndex(this._contacts, contact.id);
 
     if (index > -1) {
       this._contacts[index] = contact;
     }
-
 
     return contact;
   }
@@ -72,7 +71,7 @@ export class ContactService {
 
   public deleteContact(contact): any {
 
-    const index = this.findContactIndex(contact.id);
+    const index = this.findContactIndex(this._contacts, contact.id);
 
     if (index > -1) {
       this._contacts.splice(index, 1);
@@ -81,16 +80,16 @@ export class ContactService {
     return this._contacts;
   }
 
-  private findContactIndex(contactId: number): number {
+  public findContactIndex(contacts: Contact[], contactId: number): number {
 
-    const index = this._contacts.findIndex((data) => {
+    const index = contacts.findIndex((data) => {
       return data.id === contactId;
     });
 
     return index;
   }
 
-  private sortContactsByFirstName(data): Contact[] {
+  public sortContactsByFirstName(data): Contact[] {
 
     data.sort((a, b) => {
       if (a.name.first.toLowerCase() < b.name.first.toLowerCase()) {

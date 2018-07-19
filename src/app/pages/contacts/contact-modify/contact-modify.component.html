@@ -1,17 +1,19 @@
 <div class="contact-form-container">
 
-  <form class="" [formGroup]="modifyContactForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="modifyContactForm" (ngSubmit)="onSubmit()">
 
     <mat-form-field>
-      <input matInput placeholder="First name" formControlName="first_name" maxlength="50">
+      <input id="first_name" matInput #firstNameInput placeholder="First name" formControlName="first_name" maxlength="50">
+      <mat-hint align="end">{{firstNameInput.value?.length || 0}}/50</mat-hint>
       <mat-error *ngIf="f.get('first_name').hasError('required') && f.get('first_name').touched">
         Please type first name.
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Last name" formControlName="last_name" maxlength="50">
-      <mat-error *ngIf="f.get('first_name').hasError('required') && f.get('first_name').touched">
+      <input id="last_name" matInput #lastNameInput placeholder="Last name" formControlName="last_name" maxlength="50">
+      <mat-hint align="end">{{lastNameInput.value?.length || 0}}/50</mat-hint>
+      <mat-error *ngIf="f.get('last_name').hasError('required') && f.get('last_name').touched">
         Please type last name.
       </mat-error>
     </mat-form-field>
@@ -24,6 +26,7 @@
           <mat-form-field>
             <span matPrefix>+1 &nbsp;</span>
             <input matInput
+                   id="phone-{{i}}"
                    placeholder="Phone {{ i > 0 ? i + 1 : ''}}"
                    mask="(000) 000-0000"
                    [dropSpecialCharacters]="false"
@@ -36,10 +39,11 @@
       </div>
 
       <div>
-        <button mat-icon-button (click)="addPhone()" type="button">
+        <button id="add-input-for-phone" mat-icon-button (click)="addPhone()" type="button">
           <mat-icon aria-label="Add new contact">add</mat-icon>
         </button>
       </div>
+
     </div>
 
     <mat-list *ngIf="isFormEdit">
@@ -53,13 +57,18 @@
 
 
     <div class="form-actions button-row">
-      <button *ngIf="isFormEdit"
-              mat-raised-button color="warn"
+      <button id="delete_button"
+              *ngIf="isFormEdit"
+              mat-raised-button
+              color="warn"
               (click)="deleteContactDialog()"
               type="button">Delete Contact
       </button>
-      <button mat-raised-button color="primary"
-              [disabled]="modifyContactForm.invalid">{{ isFormEdit ? 'Edit': 'Add'}}</button>
+      <button id="save_button"
+              color="primary"
+              [disabled]="modifyContactForm.invalid">
+        {{ isFormEdit ? 'Edit': 'Add'}}
+      </button>
     </div>
 
 

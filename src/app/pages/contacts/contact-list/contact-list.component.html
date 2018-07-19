@@ -14,7 +14,7 @@
     <ng-container *ngFor="let contact of contacts | filterBy: ['name.first', 'name.last', 'phone']: searchString; let i = index;let last = last">
 
       <h3 mat-subheader *ngIf="getDifferenceBeetweenFirstLetters(i, contacts)">
-        {{contact.name.first[0].toUpperCase()}}
+        {{contact.name.first[0] | uppercase}}
       </h3>
 
       <mat-list-item>
@@ -30,10 +30,9 @@
           </button>
         </div>
 
-        <mat-divider></mat-divider>
-      </mat-list-item>
+        <mat-divider *ngIf="!last"></mat-divider>
 
-      <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
 
     </ng-container>
 
