@@ -17,15 +17,18 @@
         {{contact.name.first[0] | uppercase}}
       </h3>
 
-      <mat-list-item>
+      <mat-list-item [@contactState]="contact.state"
+                     (click)="goToContactDetail(contact)"
+                     (mouseenter)="toggleContactState(contact)"
+                     (mouseleave)="toggleContactState(contact)">
         <h4 mat-line>{{contact.name.first}} {{contact.name.last}}</h4>
         <p class="phone-number" mat-line> {{contact.phone[0] || 'No phone'}}</p>
 
         <div class="action-icons">
-          <button mat-icon-button (click)="editContact(contact)">
+          <button mat-icon-button (click)="editContact($event, contact)">
             <mat-icon aria-label="Edit contact">create</mat-icon>
           </button>
-          <button mat-icon-button (click)="deleteContactDialog(contact)">
+          <button mat-icon-button (click)="deleteContactDialog($event, contact)">
             <mat-icon aria-label="Delete contact">delete</mat-icon>
           </button>
         </div>

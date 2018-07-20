@@ -5,11 +5,27 @@ import { finalize } from 'rxjs/internal/operators';
 import { DeleteContactDialogComponent } from '../../../shared/components/delete-contact-dialog/delete-contact-dialog.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { trigger, animate, style, transition, state } from '@angular/animations';
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.scss']
+  styleUrls: ['./contact-list.component.scss'],
+  animations: [
+    trigger('contactState', [
+      state('inactive', style({
+       // backgroundColor: '#eee',
+        //transform: 'scale(1)'
+      })),
+      state('active',   style({
+       // backgroundColor: '#cfd8dc',
+        left: '-2px',
+       // transform: 'scale(1.1)'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ])
+  ]
 })
 export class ContactListComponent implements OnInit {
 
@@ -48,11 +64,12 @@ export class ContactListComponent implements OnInit {
         });
   }
 
-  public editContact(contact): void {
+  public editContact(event: Event, contact: Contact): void {
+    event.stopPropagation();
     this.router.navigate(['/contacts', contact.id, 'edit']);
   }
 
-  public deleteContact(contact): void {
+  public deleteContact(contact: Contact): void {
 
     this.isContactsListLoading = true;
     this.contacts = this.contactService.deleteContact(contact);
@@ -63,7 +80,9 @@ export class ContactListComponent implements OnInit {
 
   }
 
-  public deleteContactDialog(contact): void {
+  public deleteContactDialog(event: Event, contact: Contact): void {
+
+    event.stopPropagation();
 
     const dialogRef = this.dialog.open(DeleteContactDialogComponent, {
       width: '250px',
@@ -85,6 +104,14 @@ export class ContactListComponent implements OnInit {
       return contacts[index].name.first[0];
     }
     return contacts[index].name.first[0].toLowerCase() !== contacts[index - 1].name.first[0].toLowerCase();
+  }
+
+  public toggleContactState(contact): void {
+    contact.state = contact.state === 'active' ? 'inactive' : 'active';
+  }
+
+  public goToContactDetail(contact: Contact): void {
+    this.router.navigate(['/contacts', contact.id]);
   }
 
 }

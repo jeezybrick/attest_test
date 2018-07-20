@@ -21,3 +21,11 @@
   margin-top: -25px;
   padding-right: .5em;
 }
+.mat-list-item {
+  position: relative;
+  cursor: pointer;
+
+  .mat-icon:hover {
+    color: #3f51b5;
+  }
+}
