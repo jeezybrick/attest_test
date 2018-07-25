@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { Contact } from '../../../shared/models/contact.model';
 import { DeleteContactDialogComponent } from '../../../shared/components/delete-contact-dialog/delete-contact-dialog.component';
 import { ContactService } from '../../../shared/services/contact/contact.service';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-contact-modify',
@@ -21,6 +22,7 @@ export class ContactModifyComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private contactService: ContactService,
+              private toastService: ToastService,
               public dialog: MatDialog) {
 
   }
@@ -102,17 +104,19 @@ export class ContactModifyComponent implements OnInit {
   private addContact(data) {
     data.id = Math.floor(Math.random() * 100001);
     this.contactService.addContactToList(data);
+    this.toastService.showToast('Contact successfully added!');
     this.goToContactListPage();
-
   }
 
   private editContact(data) {
     this.contactService.editContact(data);
+    this.toastService.showToast('Contact successfully edit!');
     this.goToContactListPage();
   }
 
   private deleteContact(contact): void {
     this.contactService.deleteContact(contact);
+    this.toastService.showToast('Contact successfully deleted!');
     this.goToContactListPage();
    }
 

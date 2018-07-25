@@ -5,7 +5,7 @@ import {
   MatIconModule,
   MatListModule,
   MatPaginatorModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatSortModule,
   MatToolbarModule
 } from '@angular/material';
@@ -31,6 +31,7 @@ import { MainNavComponent } from '../core/components/main-nav/main-nav.component
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatSnackBarModule,
     NgPipesModule,
   ],
   declarations: [

@@ -25,4 +25,11 @@ export class MainNavComponent {
     this.router.navigate(['/contacts/add']);
   }
 
+  public closeSidebarByClick(drawer): void {
+
+    if (drawer.mode === 'over') {
+      drawer.close();
+    }
+  }
+
 }
