@@ -1,10 +1,7 @@
 <div class="contact-form-container">
 
   <div class="go-back-button">
-    <button mat-button (click)="goToPreviousPage()" type="button">
-      <mat-icon aria-label="Go back">reply</mat-icon>
-      Go back
-    </button>
+    <app-go-back-button></app-go-back-button>
   </div>
 
   <form [formGroup]="modifyContactForm" (ngSubmit)="onSubmit()">

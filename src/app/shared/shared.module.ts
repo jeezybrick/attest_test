@@ -15,6 +15,7 @@ import { NgPipesModule } from 'ngx-pipes';
 import { RouterModule } from '@angular/router';
 
 import { MainNavComponent } from '../core/components/main-nav/main-nav.component';
+import { GoBackButtonComponent } from './components/go-back-button/go-back-button.component';
 
 
 @NgModule({
@@ -35,10 +36,12 @@ import { MainNavComponent } from '../core/components/main-nav/main-nav.component
     NgPipesModule,
   ],
   declarations: [
-    MainNavComponent
+    MainNavComponent,
+    GoBackButtonComponent
   ],
   exports: [
-    MainNavComponent
+    MainNavComponent,
+    GoBackButtonComponent
   ]
 
 })

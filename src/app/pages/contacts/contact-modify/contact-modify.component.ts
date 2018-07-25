@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
@@ -25,7 +24,6 @@ export class ContactModifyComponent implements OnInit {
               private router: Router,
               private contactService: ContactService,
               private toastService: ToastService,
-              private location: Location,
               public dialog: MatDialog) {
 
   }
@@ -151,11 +149,6 @@ export class ContactModifyComponent implements OnInit {
       }
 
     });
-  }
-
-
-  public goToPreviousPage(): void {
-    this.location.back();
   }
 
    get f() {

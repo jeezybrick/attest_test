@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatDialogModule,
   MatFormFieldModule, MatIconModule,
   MatInputModule,
@@ -34,6 +34,7 @@ import { DeleteContactDialogComponent } from '../../shared/components/delete-con
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
+    MatCardModule,
     NgPipesModule,
     NgxMaskModule.forRoot(),
     RouterModule.forChild(contactRoutes)

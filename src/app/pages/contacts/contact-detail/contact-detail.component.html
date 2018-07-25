@@ -1,3 +1,26 @@
-<p>
-  contact-detail works!
-</p>
+<div class="go-back-button">
+  <app-go-back-button></app-go-back-button>
+</div>
+
+<div>
+  <h3>{{ fullName }}</h3>
+
+  <div>
+    <p *ngFor="let phone of contact.phone">
+      {{ phone }}
+    </p>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button
+            color="warn"
+            (click)="deleteContactDialog()"
+            type="button">Delete Contact
+    </button>
+    <button mat-raised-button
+            (click)="goToEditPage()">
+      Edit
+    </button>
+  </div>
+</div>
+
