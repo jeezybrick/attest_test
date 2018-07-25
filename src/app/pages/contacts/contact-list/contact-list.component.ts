@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Contact } from '../../../shared/models/contact.model';
-import { ContactService } from '../../../shared/services/contact/contact.service';
-import { finalize } from 'rxjs/internal/operators';
-import { DeleteContactDialogComponent } from '../../../shared/components/delete-contact-dialog/delete-contact-dialog.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { trigger, animate, style, transition, state } from '@angular/animations';
+import { finalize } from 'rxjs/internal/operators';
+
+import { DeleteContactDialogComponent } from '../../../shared/components/delete-contact-dialog/delete-contact-dialog.component';
+import { Contact } from '../../../shared/models/contact.model';
+import { ContactService } from '../../../shared/services/contact/contact.service';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -40,6 +42,7 @@ export class ContactListComponent implements OnInit {
 
   constructor(private contactService: ContactService,
               public dialog: MatDialog,
+              private toastService: ToastService,
               private router: Router) {
   }
 
@@ -78,6 +81,7 @@ export class ContactListComponent implements OnInit {
 
     this.isContactsListLoading = true;
     this.contacts = this.contactService.deleteContact(contact);
+    this.toastService.showToast('Contact successfully deleted!');
 
     setTimeout(() => {
       this.isContactsListLoading = false;

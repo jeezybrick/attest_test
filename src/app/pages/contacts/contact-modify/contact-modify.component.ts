@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
+
 import { Contact } from '../../../shared/models/contact.model';
 import { DeleteContactDialogComponent } from '../../../shared/components/delete-contact-dialog/delete-contact-dialog.component';
 import { ContactService } from '../../../shared/services/contact/contact.service';
@@ -23,6 +25,7 @@ export class ContactModifyComponent implements OnInit {
               private router: Router,
               private contactService: ContactService,
               private toastService: ToastService,
+              private location: Location,
               public dialog: MatDialog) {
 
   }
@@ -148,6 +151,11 @@ export class ContactModifyComponent implements OnInit {
       }
 
     });
+  }
+
+
+  public goToPreviousPage(): void {
+    this.location.back();
   }
 
    get f() {
