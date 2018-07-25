@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +16,7 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
     PageNotFoundComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'app' }),
+    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -27,14 +26,4 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
   bootstrap: [AppComponent]
 })
 
-export class AppModule {
-
-   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(APP_ID) private appId: string) {
-    const platform = isPlatformBrowser(platformId) ?
-      'in the browser' : 'on the server';
-    console.log(`Running ${platform} with appId=${appId}`);
-  }
-
-}
+export class AppModule {}

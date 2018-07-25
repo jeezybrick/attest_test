@@ -2,7 +2,6 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { APP_BASE_HREF } from '@angular/common';
 import { map, tap } from 'rxjs/internal/operators';
 
 import { Contact } from '../../models/contact.model';
@@ -17,8 +16,7 @@ export class ContactService {
   private _contacts: Contact[];
   public contactsObs$;
 
-  constructor(private http: HttpClient,
-              @Optional() @Inject(APP_BASE_HREF) origin: string) {
+  constructor(private http: HttpClient) {
   }
 
   public getContactsList(forceRefresh?: boolean): Observable<any> {
