@@ -20,13 +20,13 @@ import { trigger, animate, style, transition, state } from '@angular/animations'
         left: '-2px'
       })),
       state('in', style({transform: 'translateX(0)'})),
-      transition('void => *', [
+     /* transition('void => *', [
         style({transform: 'translateX(-100%)'}),
         animate('0.3s 200ms')
       ]),
       transition('* => void', [
         animate(100, style({transform: 'translateX(100%)'}))
-      ]),
+      ]),*/
       transition('inactive => active', animate('100ms ease-in')),
       transition('active => inactive', animate('100ms ease-out'))
     ])
