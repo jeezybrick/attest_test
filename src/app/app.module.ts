@@ -13,7 +13,7 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
   declarations: [
     AppComponent,
     ShellComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -123,4 +123,9 @@ export class ContactListComponent implements OnInit {
     this.router.navigate(['/contacts', contact.id]);
   }
 
+
+  public onSearchTextChange(searchText: string): void {
+    this.searchString = searchText;
+  }
+
 }

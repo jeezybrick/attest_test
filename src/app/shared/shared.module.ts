@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MatButtonModule,
-  MatIconModule,
+  MatButtonModule, MatFormFieldModule,
+  MatIconModule, MatInputModule,
   MatListModule,
   MatPaginatorModule,
   MatSidenavModule, MatSnackBarModule,
@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 
 import { MainNavComponent } from '../core/components/main-nav/main-nav.component';
 import { GoBackButtonComponent } from './components/go-back-button/go-back-button.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 
 @NgModule({
@@ -33,15 +34,19 @@ import { GoBackButtonComponent } from './components/go-back-button/go-back-butto
     MatSidenavModule,
     MatIconModule,
     MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule,
     NgPipesModule,
   ],
   declarations: [
     MainNavComponent,
-    GoBackButtonComponent
+    GoBackButtonComponent,
+    SearchInputComponent
   ],
   exports: [
     MainNavComponent,
-    GoBackButtonComponent
+    GoBackButtonComponent,
+    SearchInputComponent
   ]
 
 })

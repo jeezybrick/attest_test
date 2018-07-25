@@ -1,13 +1,6 @@
 <ng-container *ngIf="!isContactsListLoading; else contacts_loading">
 
-  <div class="search-container">
-
-    <mat-form-field>
-      <input matInput placeholder="Quick Search" [(ngModel)]="searchString" type="text">
-    </mat-form-field>
-
-  </div>
-
+  <app-search-input (filterTextChanged)="onSearchTextChange($event)"></app-search-input>
 
   <mat-list>
 
