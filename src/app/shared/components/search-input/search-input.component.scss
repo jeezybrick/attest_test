@@ -3,10 +3,10 @@
   flex-direction: column;
   padding: 0 1em;
   position: sticky;
-  top: 65px;
+  top: 64px;
   position: -webkit-sticky;
-  background-color: #FFFFFF;
-  z-index: 99;
+  z-index: 3;
+  background-color: #fafafa;
 
   > * {
     width: 100%;
