@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   padding: 0 1em;
+  position: sticky;
+  top: 65px;
+  position: -webkit-sticky;
+  background-color: #FFFFFF;
+  z-index: 99;
 
   > * {
     width: 100%;
