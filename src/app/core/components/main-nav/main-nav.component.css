@@ -9,6 +9,7 @@
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
+  z-index: 99;
 }
 
 .right-icon {
@@ -18,8 +19,4 @@
 
 .spacer {
   flex: 1 1 auto;
-}
-
-.mat-toolbar {
-  z-index: 99;
 }
