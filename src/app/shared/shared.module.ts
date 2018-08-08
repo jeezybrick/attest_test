@@ -14,9 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgPipesModule } from 'ngx-pipes';
 import { RouterModule } from '@angular/router';
 
-import { MainNavComponent } from '../core/components/main-nav/main-nav.component';
 import { GoBackButtonComponent } from './components/go-back-button/go-back-button.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
 
 
 @NgModule({

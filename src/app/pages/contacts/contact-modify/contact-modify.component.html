@@ -31,7 +31,7 @@
             <span matPrefix>+1 &nbsp;</span>
             <input matInput
                    id="phone-{{i}}"
-                   placeholder="Phone {{ i > 0 ? i + 1 : ''}}"
+                   [placeholder]="'Phone' + (i > 0 ? i + 1 : '')"
                    mask="(000) 000-0000"
                    [dropSpecialCharacters]="false"
                    formControlName="phone">
@@ -51,7 +51,7 @@
     </div>
 
     <mat-list *ngIf="isFormEdit">
-     <mat-list-item *ngFor="let phone of this.contact.phone">
+     <mat-list-item *ngFor="let phone of contact.phone">
         {{phone}}
         <button mat-icon-button (click)="deletePhoneFromList(phone)" type="button">
           <mat-icon aria-label="Delete contact">delete</mat-icon>

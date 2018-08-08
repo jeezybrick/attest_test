@@ -18,7 +18,8 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactModifyComponent } from './contact-modify/contact-modify.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
-import { DeleteContactDialogComponent } from '../../shared/components/delete-contact-dialog/delete-contact-dialog.component';
+import { DeleteContactDialogComponent } from './delete-contact-dialog/delete-contact-dialog.component';
+
 
 
 @NgModule({
